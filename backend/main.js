@@ -26,39 +26,41 @@ app.use(require("helmet")({
 app.use(require("compression")());
 const server = http.createServer(app);
 
-app.engine(".html", require("ejs").__express);
-app.set("views", path.join(__dirname, "../frontend"));
-app.set("view engine", "html");
+module.exports = () => {
+    app.engine(".html", require("ejs").__express);
+    app.set("views", path.join(__dirname, "../frontend"));
+    app.set("view engine", "html");
 
-app.get("/", (req, res) => {
-    res.render("html/main.html", {});
-});
-    
-app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
-app.use("/bootstrap/css", express.static(path.join(__dirname, "../../resources/bootstrap-5.2.2-dist/css")));
-app.use("/bootstrap/js", express.static(path.join(__dirname, "../../resources/bootstrap-5.2.2-dist/js")));
-app.use("/css", express.static(path.join(__dirname, "../frontend/css")));
-app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
-app.use("/jquery", express.static(path.join(__dirname, "../../resources/jquery-3.6.0")));
-app.use("/particles", express.static(path.join(__dirname, "../../resources/particles.js-2.0")));
-
-app.use((req, res) => {
-    res.status(404).render("html/httpStatus/404.html", {
-        err: {
-            code: "Nie znaleziono strony '" + req.url + "' Strona nie istnieje lub tymczasowo nie działa :/"
-        }
+    app.get("/", (req, res) => {
+        res.render("html/main.html", {});
     });
-});
+        
+    app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
+    app.use("/bootstrap/css", express.static(path.join(__dirname, "../../resources/bootstrap-5.2.2-dist/css")));
+    app.use("/bootstrap/js", express.static(path.join(__dirname, "../../resources/bootstrap-5.2.2-dist/js")));
+    app.use("/css", express.static(path.join(__dirname, "../frontend/css")));
+    app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
+    app.use("/jquery", express.static(path.join(__dirname, "../../resources/jquery-3.6.0")));
+    app.use("/particles", express.static(path.join(__dirname, "../../resources/particles.js-2.0")));
 
-app.use((error, req, res) => {
-    res.status(500).render("html/httpStatus/500.html", {
-        err: {
-            url: req.url,
-            code: error
-        }
+    app.use((req, res) => {
+        res.status(404).render("html/httpStatus/404.html", {
+            err: {
+                code: "Nie znaleziono strony '" + req.url + "' Strona nie istnieje lub tymczasowo nie działa :/"
+            }
+        });
     });
-});
 
-const listener = server.listen(process.env.PORT || 8080, () => {
-    console.log("Panel uruchomiony na porcie " + listener.address().port);
-});
+    app.use((error, req, res) => {
+        res.status(500).render("html/httpStatus/500.html", {
+            err: {
+                url: req.url,
+                code: error
+            }
+        });
+    });
+
+    const listener = server.listen(process.env.PORT || 8080, () => {
+        console.log("Panel uruchomiony na porcie " + listener.address().port);
+    });
+}
