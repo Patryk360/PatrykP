@@ -18,14 +18,17 @@ const next = () => {
     });
 }
 $("#done").click(() => {
-    if (($("#answer").val()).toLowerCase() === textData.allowed) {
+    const answerRaw = ($("#answer").val()).toLowerCase();
+    const answer = answerRaw.split(" ")[1];
+    const splitAnswer = answerRaw.split(" ")[0];
+    if (textData.article.includes(splitAnswer.toLowerCase())&&(answer === textData.allowed)) {
         alert("dopuszczono");
         points += 0.5;
     }
-    else if (($("#answer").val()).toLowerCase() === textData.wordGerman) {
+    else if (textData.article.includes(splitAnswer.toLowerCase())&&(answer === textData.wordGerman)) {
         alert("poprawnie");
         points += 1;
     }
-    else if (($("#answer").val()).toLowerCase() != textData.wordGerman) alert("Źle! Poprawna odpowiedź: "+textData.article.join(", ")+" "+textData.wordGerman.charAt(0).toUpperCase()+textData.wordGerman.slice(1));
+    else if (answer != textData.wordGerman) alert("Źle! Poprawna odpowiedź: "+textData.article.join(" lub ")+" "+textData.wordGerman.charAt(0).toUpperCase()+textData.wordGerman.slice(1)+" Pamiętaj o rodzajnikach :D");
     next();
 });
