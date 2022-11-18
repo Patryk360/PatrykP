@@ -12,6 +12,7 @@ const next = () => {
     $.getJSON( "/wordsjson/german.json", (data) => {
         const text = data[Math.floor(Math.random()*data.length)];
         textData = text;
+        $("#answer").val("");
         $("#points").text("Punkty: "+points);
         $("#text").text(text.wordPolish.charAt(0).toUpperCase()+text.wordPolish.slice(1));
     });
