@@ -5,6 +5,9 @@ module.exports = () => {
     app.get("/words/german", (req, res) => {
         res.render("html/words/german.html", {});
     });
+    app.get("/words/german/list", (req, res) => {
+        res.render("html/words/germanList.html", {});
+    });
     app.get("/words/english", (req, res) => {
         res.render("html/words/english.html", {});
     });
