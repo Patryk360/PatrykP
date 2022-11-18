@@ -29,6 +29,6 @@ $("#done").click(() => {
         alert("poprawnie");
         points += 1;
     }
-    else if (answer != textData.wordGerman) alert("Źle! Poprawna odpowiedź: "+textData.article.join(" lub ")+" "+textData.wordGerman.charAt(0).toUpperCase()+textData.wordGerman.slice(1)+" Pamiętaj o rodzajnikach :D");
+    else if (!(textData.article.includes(splitAnswer.toLowerCase()))||answer != textData.wordGerman) alert("Źle! Poprawna odpowiedź: "+textData.article.join(" lub ")+" "+textData.wordGerman.charAt(0).toUpperCase()+textData.wordGerman.slice(1)+" Pamiętaj o rodzajnikach :D");
     next();
 });
