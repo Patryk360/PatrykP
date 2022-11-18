@@ -34,14 +34,17 @@ module.exports = () => {
     app.get("/", (req, res) => {
         res.render("html/main.html", {});
     });
-        
-    app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
-    app.use("/bootstrap/css", express.static(path.join(__dirname, "../../resources/bootstrap-5.2.2-dist/css")));
-    app.use("/bootstrap/js", express.static(path.join(__dirname, "../../resources/bootstrap-5.2.2-dist/js")));
+
+    app.use("/", require("./learn/words.js")());
+    
+    app.use("/wordsjson", express.static(path.join(__dirname, "../resources/words")));
+    app.use("/images", express.static(path.join(__dirname, "../resources/images")));
+    app.use("/bootstrap/css", express.static(path.join(__dirname, "../resources/bootstrap-5.2.2-dist/css")));
+    app.use("/bootstrap/js", express.static(path.join(__dirname, "../resources/bootstrap-5.2.2-dist/js")));
     app.use("/css", express.static(path.join(__dirname, "../frontend/css")));
     app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
-    app.use("/jquery", express.static(path.join(__dirname, "../../resources/jquery-3.6.0")));
-    app.use("/particles", express.static(path.join(__dirname, "../../resources/particles.js-2.0")));
+    app.use("/jquery", express.static(path.join(__dirname, "../resources/jquery-3.6.0")));
+    app.use("/particles", express.static(path.join(__dirname, "../resources/particles.js-2.0")));
 
     app.use((req, res) => {
         res.status(404).render("html/httpStatus/404.html", {

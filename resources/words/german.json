@@ -1,0 +1,4 @@
+[
+    {"article": ["die","e"], "wordPolish": "meble", "wordGerman": "möbel", "allowed": "mobel"},
+    {"article": ["der","r"], "wordPolish": "stół", "wordGerman": "tisch", "allowed": false}
+]
