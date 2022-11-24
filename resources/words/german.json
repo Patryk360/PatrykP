@@ -32,5 +32,20 @@
     {"article": ["die","e"], "wordPolish": "kwiat", "wordGerman": "blume", "allowed": false},
     {"article": ["der","r"], "wordPolish": "wieszak na ubrania", "wordGerman": "kleiderständer", "allowed": "kleiderstander"},
     {"article": ["der","r"], "wordPolish": "szafka na buty", "wordGerman": "schuhschrank", "allowed": false},
-    {"article": ["die","e"], "wordPolish": "zegar", "wordGerman": "wanduhr", "allowed": false}
+    {"article": ["die","e"], "wordPolish": "zegar", "wordGerman": "wanduhr", "allowed": false},
+    {"article": ["die","e"], "wordPolish": "sprzęt gospodarstwa domowego", "wordGerman": "haushaltsgeräte", "allowed": "haushaltsgerate"},
+    {"article": ["der","r"], "wordPolish": "telewizor", "wordGerman": "fernseher", "allowed": false},
+    {"article": ["der","r"], "wordPolish": "odtwarzacz DVD", "wordGerman": "dvd-player", "allowed": false},
+    {"article": ["die","e"], "wordPolish": "kuchenka mikrofalowa", "wordGerman": "mikrowelle", "allowed": false},
+    {"article": ["der","r"], "wordPolish": "kuchenka elektryczna", "wordGerman": "elektroherd", "allowed": false},
+    {"article": ["der","r"], "wordPolish": "kuchenka gazowa", "wordGerman": "gasherd", "allowed": false},
+    {"article": ["die","e"], "wordPolish": "zmywarka", "wordGerman": "spülmaschine", "allowed": "spulmaschine"},
+    {"article": ["der","r"], "wordPolish": "lodówka", "wordGerman": "kühlschrank", "allowed": "kuhlschrank"},
+    {"article": ["der","r"], "wordPolish": "piekarnik", "wordGerman": "backoften", "allowed": false},
+    {"article": ["die","e"], "wordPolish": "ekspres do kawy", "wordGerman": "kaffeemaschine", "allowed": false},
+    {"article": ["die","e"], "wordPolish": "robot kuchenny", "wordGerman": "küchenmaschine", "allowed": "kuchenmaschine"},
+    {"article": ["der","r"], "wordPolish": "czajnik", "wordGerman": "wasserkocher", "allowed": false},
+    {"article": ["der","r"], "wordPolish": "odkurzacz", "wordGerman": "staubsauger", "allowed": false},
+    {"article": ["das","s"], "wordPolish": "żelazko", "wordGerman": "bügeleisen", "allowed": "bugeleisen"},
+    {"article": ["die","e"], "wordPolish": "pralka", "wordGerman": "waschmaschine", "allowed": false}
 ]
