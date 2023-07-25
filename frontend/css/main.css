@@ -2,6 +2,14 @@
     background-color: #18dcff;
 }
 .navbar {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 14pt;
+    min-height: 80px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(24,220,255,1) 100%);
+}
+.br-gradient {
     min-height: 80px;
     background: rgb(24,220,255);
     background: linear-gradient(0deg, rgba(24,220,255,1) 0%, rgba(255,255,255,1) 100%);
