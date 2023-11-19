@@ -36,11 +36,12 @@ module.exports = () => {
     });
 
     app.use("/", require("./learn/words.js")());
-    
+    app.use("/", require("./portfolio/cv.js")());
+
     app.use("/wordsjson", express.static(path.join(__dirname, "../resources/words")));
     app.use("/images", express.static(path.join(__dirname, "../resources/images")));
-    app.use("/bootstrap/css", express.static(path.join(__dirname, "../resources/bootstrap-5.3.0-dist/css")));
-    app.use("/bootstrap/js", express.static(path.join(__dirname, "../resources/bootstrap-5.3.0-dist/js")));
+    app.use("/bootstrap/css", express.static(path.join(__dirname, "../resources/bootstrap-5.3.2-dist/css")));
+    app.use("/bootstrap/js", express.static(path.join(__dirname, "../resources/bootstrap-5.3.2-dist/js")));
     app.use("/css", express.static(path.join(__dirname, "../frontend/css")));
     app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
     app.use("/jquery", express.static(path.join(__dirname, "../resources/jquery-3.6.0")));
