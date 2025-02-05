@@ -34,6 +34,9 @@ module.exports = () => {
     app.get("/", (req, res) => {
         res.render("html/main.html", {});
     });
+    app.get("/offers", (req, res) => {
+        res.render("html/offers.html", {});
+    });
 
     app.use("/", require("./learn/words.js")());
     app.use("/", require("./portfolio/cv.js")());
