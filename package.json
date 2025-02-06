@@ -1,20 +1,21 @@
 {
   "name": "patrykp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Portfolio",
   "main": "app.js",
   "repository": "https://github.com/Patryk360/PatrykP.git",
   "author": "Patryk360 <nexigamingyt@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "21.x"
+    "node": "22.x"
   },
   "dependencies": {
     "compression": "^1.7.5",
     "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "helmet": "^8.0.0"
+    "helmet": "^8.0.0",
+    "stripe": "^17.6.0"
   },
   "packageManager": "yarn@4.6.0"
 }
