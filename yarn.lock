@@ -54,6 +54,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bluebird@npm:>= 2.3.2 < 3":
+  version: 2.11.0
+  resolution: "bluebird@npm:2.11.0"
+  checksum: 10c0/d0c55c4c5f56522ee53e1762908c73ad97e403ce24d80ae99af3bf8902764530df0f7c88f35a1de809aa4b62d474c17f6bd83c8bc4f8cb539c50fddec1896c20
+  languageName: node
+  linkType: hard
+
 "body-parser@npm:1.20.3":
   version: 1.20.3
   resolution: "body-parser@npm:1.20.3"
@@ -120,7 +127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.2":
+"chalk@npm:4.1.2, chalk@npm:^4.0.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -244,6 +251,13 @@ __metadata:
   version: 1.2.0
   resolution: "destroy@npm:1.2.0"
   checksum: 10c0/bd7633942f57418f5a3b80d5cb53898127bcf53e24cdf5d5f4396be471417671f0fee48a4ebe9a1e9defbde2a31280011af58a57e090ff822f589b443ed4e643
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.4.7":
+  version: 16.4.7
+  resolution: "dotenv@npm:16.4.7"
+  checksum: 10c0/be9f597e36a8daf834452daa1f4cc30e5375a5968f98f46d89b16b983c567398a330580c88395069a77473943c06b877d1ca25b4afafcdd6d4adb549e8293462
   languageName: node
   linkType: hard
 
@@ -666,11 +680,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "patrykp@workspace:."
   dependencies:
+    chalk: "npm:4.1.2"
     compression: "npm:^1.8.0"
     cookie-parser: "npm:^1.4.7"
+    dotenv: "npm:^16.4.7"
     ejs: "npm:^3.1.10"
     express: "npm:^4.21.2"
     helmet: "npm:^8.0.0"
+    rethinkdb: "npm:^2.4.2"
     stripe: "npm:^17.6.0"
   languageName: unknown
   linkType: soft
@@ -719,6 +736,15 @@ __metadata:
     iconv-lite: "npm:0.4.24"
     unpipe: "npm:1.0.0"
   checksum: 10c0/b201c4b66049369a60e766318caff5cb3cc5a900efd89bdac431463822d976ad0670912c931fdbdcf5543207daf6f6833bca57aa116e1661d2ea91e12ca692c4
+  languageName: node
+  linkType: hard
+
+"rethinkdb@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "rethinkdb@npm:2.4.2"
+  dependencies:
+    bluebird: "npm:>= 2.3.2 < 3"
+  checksum: 10c0/cab2b6f8d8df1192bedcc765f58d0cf0b8681313e09ee0f6a17cbed6edd463808edbbfee3d394a092d9e31014189e07c2cd842a3197b08e7dc532ff228cfaee1
   languageName: node
   linkType: hard
 
