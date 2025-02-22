@@ -6,7 +6,6 @@ const { Router } = require("express");
 const app = Router();
 module.exports = () => {
     app.get('/stripe/test', async (req, res) => {
-        if (!req.cookies.id) return res.redirect("/");
         const session = await stripe.checkout.sessions.create({
             line_items: [
                 {
