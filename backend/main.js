@@ -41,6 +41,7 @@ module.exports = () => {
     app.use("/", require("./learn/words.js")());
     app.use("/", require("./portfolio/cv.js")());
 
+    app.use("/api", require("./api/stripe.js")());
     app.use("/wordsjson", express.static(path.join(__dirname, "../resources/words")));
     app.use("/images", express.static(path.join(__dirname, "../resources/images")));
     app.use("/bootstrap/css", express.static(path.join(__dirname, "../resources/bootstrap-5.3.2-dist/css")));
