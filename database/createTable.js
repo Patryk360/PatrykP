@@ -3,6 +3,7 @@ module.exports.setup = async (conn, r) => {
     const tableList = await r.tableList().run(conn);
     const tableArray = [
         { name: "Users", primaryKey: "id", index: false },
+        { name: "Data", primaryKey: "id", index: false }
     ];
     if (tableList.length < tableArray.length) console.log("Creating a table in the database...");
     for (const table of tableArray) {

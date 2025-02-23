@@ -2,6 +2,14 @@ body {
     background: #ef7f1a;
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+}
+a:hover {
+    color: #474545;
+}
+
 .info {
     background-color: #000000;
     color: #ffffff;
@@ -28,4 +36,20 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #e48a3b;
+}
+
+.pacifico {
+    font-family: "Pacifico", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.description {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.contact {
+    color: #1e2692;
 }

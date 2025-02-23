@@ -8,6 +8,7 @@ const run = async () => {
     const conn = await connect(r);
     await setup(conn, r);
     start(conn, r);
+    require("./modules/tokensModule.js").tokens(conn, r);
 }
 run();
 
