@@ -1,7 +1,7 @@
 "use strict";
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const { domain } = require("../../configs/dashboardConfig.js");
+const { domain } = require("../../../configs/dashboardConfig.js");
 const { Router } = require("express");
 const app = Router();
 module.exports = () => {
