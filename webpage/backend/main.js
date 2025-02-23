@@ -26,7 +26,7 @@ app.use(require("helmet")({
 app.use(require("compression")());
 const server = http.createServer(app);
 
-module.exports = () => {
+module.exports = (conn, r) => {
     app.engine(".html", require("ejs").__express);
     app.set("views", path.join(__dirname, "../frontend"));
     app.set("view engine", "html");
@@ -41,15 +41,18 @@ module.exports = () => {
     app.use("/", require("./learn/words.js")());
     app.use("/", require("./portfolio/cv.js")());
 
-    app.use("/api", require("./api/stripe.js")());
-    app.use("/wordsjson", express.static(path.join(__dirname, "../resources/words")));
-    app.use("/images", express.static(path.join(__dirname, "../resources/images")));
-    app.use("/bootstrap/css", express.static(path.join(__dirname, "../resources/bootstrap-5.3.2-dist/css")));
-    app.use("/bootstrap/js", express.static(path.join(__dirname, "../resources/bootstrap-5.3.2-dist/js")));
+    app.use("/", require("./dashboard/auth.js")(conn, r));
+    app.use("/", require("./dashboard/register.js")(conn, r));
+
+    app.use("/api", require("./api/stripe.js")(conn, r));
+    app.use("/wordsjson", express.static(path.join(__dirname, "../../resources/words")));
+    app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
+    app.use("/bootstrap/css", express.static(path.join(__dirname, "../../resources/bootstrap-5.3.2-dist/css")));
+    app.use("/bootstrap/js", express.static(path.join(__dirname, "../../resources/bootstrap-5.3.2-dist/js")));
     app.use("/css", express.static(path.join(__dirname, "../frontend/css")));
     app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
-    app.use("/jquery", express.static(path.join(__dirname, "../resources/jquery-3.6.0")));
-    app.use("/particles", express.static(path.join(__dirname, "../resources/particles.js-2.0")));
+    app.use("/jquery", express.static(path.join(__dirname, "../../resources/jquery-3.6.0")));
+    app.use("/particles", express.static(path.join(__dirname, "../../resources/particles.js-2.0")));
 
     app.use((req, res) => {
         res.status(404).render("html/httpStatus/404.html", {

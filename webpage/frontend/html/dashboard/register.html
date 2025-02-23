@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/images/logo.png">
+        <title>Register</title>
+    </head>
+    <body>
+        <%- include('../partials/navbar.html', { }); %>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Rejestracja</h2>
+                            <form action="/register/submit" method="POST">
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Imię</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Adres e-mail</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Hasło</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Potwierdź hasło</label>
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100">Zarejestruj się</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+
+        <%- include('../partials/footer.html', { }); %>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/jquery/jquery-3.6.0.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+</html>
