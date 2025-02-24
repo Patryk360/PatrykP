@@ -1,12 +1,13 @@
 "use strict";
 const { Router } = require("express");
 const app = Router();
-module.exports = () => {
+module.exports = (conn, r) => {
     app.get('/login', async (req, res) => {
         res.render("html/dashboard/auth.html", {});
     });
     app.post("/login/submit", (req, res) => {
-        res.send(req.body);
+        console.log(req.body);
+        res.redirect("/?l=success");
     });
     app.get('/logout', async (req, res) => {
         res.render("html/dashboard/auth.html", {});

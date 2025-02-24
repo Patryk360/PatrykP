@@ -45,6 +45,7 @@ module.exports = (conn, r) => {
     app.use("/", require("./dashboard/register.js")(conn, r));
 
     app.use("/api", require("./api/stripe.js")(conn, r));
+    app.use("/map", express.static(path.join(__dirname, "../../resources/sitemap")));
     app.use("/wordsjson", express.static(path.join(__dirname, "../../resources/words")));
     app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
     app.use("/bootstrap/css", express.static(path.join(__dirname, "../../resources/bootstrap-5.3.2-dist/css")));
