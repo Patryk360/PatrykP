@@ -33,6 +33,7 @@ module.exports = (conn, r) => {
             id,
             username,
             email,
+            token: false,
             password: hash,
             verified: false
         };
