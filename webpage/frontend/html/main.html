@@ -13,7 +13,6 @@
     </head>
     <body>
         <%- include('partials/navbar.html', { }); %>
-        
         <div class="info">
             <div class="container text-center">
                 <h1 class="motto pt-5 pb-5">Dreams stay dreams unless you create...</h1>
@@ -206,8 +205,12 @@
         </div>
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-
         <%- include('partials/footer.html', { }); %>
+
+        <script>
+            (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="yuJDTPOI1MgI8xhCIpPLB";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        </script>
+
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/jquery/jquery-3.6.0.min.js"></script>
         <script src="/js/main.js"></script>
