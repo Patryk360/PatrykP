@@ -1,6 +1,6 @@
 {
   "name": "patrykp",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Portfolio",
   "main": "app.js",
   "repository": "https://github.com/Patryk360/PatrykP.git",
@@ -10,6 +10,7 @@
     "node": "22.x"
   },
   "dependencies": {
+    "@distube/ytdl-core": "^4.16.4",
     "bcrypt": "^5.1.1",
     "chalk": "4.1.2",
     "compression": "^1.8.0",
@@ -17,6 +18,7 @@
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
+    "ffmpeg-static": "^5.2.0",
     "form-data": "^4.0.2",
     "helmet": "^8.0.0",
     "mailgun.js": "^12.0.0",

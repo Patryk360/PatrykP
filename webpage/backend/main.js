@@ -43,8 +43,10 @@ module.exports = (conn, r) => {
 
     app.use("/", require("./dashboard/auth.js")(conn, r));
     app.use("/", require("./dashboard/register.js")(conn, r));
+    app.use("/", require("./dashboard/ytdownloader.js")(conn, r));
 
     app.use("/api", require("./api/stripe.js")(conn, r));
+    app.use("/api", require("./api/ytdownloader.js")(conn, r));
     app.use("/map", express.static(path.join(__dirname, "../../resources/sitemap")));
     app.use("/wordsjson", express.static(path.join(__dirname, "../../resources/words")));
     app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
