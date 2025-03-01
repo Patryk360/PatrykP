@@ -7,8 +7,8 @@ const Mailgun = require("mailgun.js");
 const { Router } = require("express");
 const app = Router();
 module.exports = (conn, r) => {
-    app.get('/register', async (req, res) => {
-        res.render("html/dashboard/register.html", {});
+    app.get("/register", async (req, res) => {
+        res.render("html/dashboard/register.html", { token: req.cookies.token });
     });
 
     app.post("/register/submit", async (req, res) => {
@@ -34,14 +34,18 @@ module.exports = (conn, r) => {
             username,
             email,
             token: false,
+            tokenExpired: false,
             password: hash,
             verified: false
         };
 
-        const test = await bcrypt.compare(password, hash);
-        console.log(test);
+        const userExists = await r.table("Users").getAll([username, email], { index: "user" }).coerceTo("array").run(conn);
+
+        if (userExists.length > 0) return res.redirect("/register?r=userExists");
 
         console.log(user);
+
+        await r.table("Users").insert(user).run(conn);
 
         try {
             await mg.messages.create("patrykp.pl", {
@@ -57,13 +61,24 @@ module.exports = (conn, r) => {
         res.redirect("/?r=success");
     });
 
-    app.get('/unregister', async (req, res) => {
-        res.render("html/dashboard/register.html", {});
+    app.get("/unregister", async (req, res) => {
+        if (!req.cookies.token) return res.redirect("/login");
+        res.render("html/dashboard/unregister.html", { token: req.cookies.token });
     });
 
-    app.get('/verify', async (req, res) => {
+    app.post("/unregister/submit", async (req, res) => {
+        if (!req.cookies.token) return res.redirect("/login");
+        await r.table("Users").getAll(req.cookies.token, { index: "token" }).delete().run(conn);
+
+        res.clearCookie("token");
+        res.redirect("/?ur=success");
+    });
+
+    app.get("/verify", async (req, res) => {
         const { id } = req.query;
         console.log(id);
+
+        await r.table("Users").get(id).update({ verified: true }).run(conn);
         res.redirect("/?v=success");
     });
     return app;
