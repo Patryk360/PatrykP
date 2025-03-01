@@ -10,7 +10,7 @@
                     <a class="nav-link" href="/offers">Oferty</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/blog">Blog</a>
+                    <a class="nav-link" href="/mainblog">Blog</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,9 +34,21 @@
                 </li>
             </ul>
             <ul class="navbar-nav text-center ms-auto">
+                <% if (!token) { %>
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
+                <% } else { %>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Profil
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item" href="/unregister">Wyrejestruj</a></li>
+                    </ul>
+                </li>
+                <% } %>
             </ul>
         </div>
     </div>

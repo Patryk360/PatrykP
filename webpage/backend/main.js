@@ -32,10 +32,19 @@ module.exports = (conn, r) => {
     app.set("view engine", "html");
 
     app.get("/", (req, res) => {
-        res.render("html/main.html", {});
+        res.render("html/main.html", { token: req.cookies.token });
     });
     app.get("/offers", (req, res) => {
-        res.render("html/offers.html", {});
+        res.render("html/offers.html", { token: req.cookies.token });
+    });
+    app.get("/mainblog", (req, res) => {
+        res.render("html/blog/mainBlog.html", { token: req.cookies.token, blogs: [] });
+    });
+    app.get("/makeblog", (req, res) => {
+        res.render("html/blog/makeBlog.html", { token: req.cookies.token });
+    });
+    app.get("/blog", (req, res) => {
+        res.render("html/blog/blog.html", { token: req.cookies.token, html: "ok" });
     });
 
     app.use("/", require("./learn/words.js")());
