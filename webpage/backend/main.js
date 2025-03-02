@@ -64,6 +64,7 @@ module.exports = (conn, r) => {
     app.use("/css", express.static(path.join(__dirname, "../frontend/css")));
     app.use("/js", express.static(path.join(__dirname, "../frontend/js")));
     app.use("/jquery", express.static(path.join(__dirname, "../../resources/jquery-3.6.0")));
+    app.use("/ckeditor", express.static(path.join(__dirname, "../../resources/ckeditor5")));
     app.use("/particles", express.static(path.join(__dirname, "../../resources/particles.js-2.0")));
 
     app.use((req, res) => {
