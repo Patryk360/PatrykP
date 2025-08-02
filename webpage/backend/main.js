@@ -34,6 +34,9 @@ module.exports = (conn, r) => {
     app.get("/", (req, res) => {
         res.render("html/main.html", { token: req.cookies.token });
     });
+    app.get("/voyagerzero", (req, res) => {
+        res.render("html/voyagerzero.html", { token: req.cookies.token });
+    });
     app.get("/offers", (req, res) => {
         res.render("html/offers.html", { token: req.cookies.token });
     });
