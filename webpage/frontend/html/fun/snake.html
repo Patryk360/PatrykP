@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <title>Snake</title>
+    <link rel="stylesheet" href="/css/fun/snake.css">
+</head>
+<body>
+    <div class="centerDiv">
+        <h3 id="point">0</h3>
+    </div>
+    <div class="topDiv">
+        <table id="leaderboard"></table>
+        <form id="form">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value=""><br>
+        </form>
+        <button onclick="changeName()">OK</button>
+    </div>
+    <canvas id="snake" class="center" width="806" height="806"></canvas>
+    <script src="/js/fun/snake.js"></script>
+    <button class="center" onclick="start()">Start</button>
+    <button class="center" onclick="stop()">Stop</button>
+</body>
+</html>

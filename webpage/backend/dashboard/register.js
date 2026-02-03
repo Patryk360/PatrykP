@@ -2,10 +2,10 @@
 require("dotenv").config();
 const { domain } = require("../../../configs/dashboardConfig.js");
 const bcrypt = require("bcrypt");
-const FormData = require("form-data");
-const Mailgun = require("mailgun.js");
+const Mailjet = require("node-mailjet");
 const { Router } = require("express");
 const app = Router();
+
 module.exports = (conn, r) => {
     app.get("/register", async (req, res) => {
         res.render("html/dashboard/register.html", { token: req.cookies.token });
@@ -19,13 +19,6 @@ module.exports = (conn, r) => {
         if (password !== confirmPassword || password.length < 8) {
             return res.redirect("/register?r=error");
         }
-
-        const mailgun = new Mailgun(FormData);
-        const mg = mailgun.client({
-            username: "api",
-            key: process.env.MAILGUN_API_KEY,
-            url: "https://api.eu.mailgun.net"
-        });
 
         const id = await r.uuid().run(conn);
         const hash = await bcrypt.hash(password, 10);
@@ -47,16 +40,35 @@ module.exports = (conn, r) => {
 
         await r.table("Users").insert(user).run(conn);
 
+        const mailjet = Mailjet.apiConnect(
+            process.env.MJ_APIKEY_PUBLIC,
+            process.env.MJ_APIKEY_PRIVATE
+        );
+
         try {
-            await mg.messages.create("patrykp.pl", {
-                from: "PatrykP <noreply@patrykp.pl>",
-                to: [`${username} <${email}>`],
-                subject: "Zweryfikuj email",
-                text: `Kliknij link aby zweryfikować email:\n${domain}/verify?id=${id}`,
-            });
-          } catch (error) {
-            console.error(error);
-          }
+            await mailjet.post("send", { version: "v3.1" }).request({
+                    Messages: [
+                        {
+                            From: {
+                                Email: "noreply@patrykp.pl",
+                                Name: "PatrykP"
+                            },
+                            To: [
+                                {
+                                    Email: email,
+                                    Name: username
+                                }
+                            ],
+                            Subject: "Zweryfikuj email",
+                            TextPart: `Kliknij link aby zweryfikować email:\n${domain}/verify?id=${id}`
+                        }
+                    ]
+                });
+
+            console.log("Mail wysłany przez Mailjet!");
+        } catch (error) {
+            console.error("Błąd wysyłki maila:", error);
+        }
 
         res.redirect("/?r=success");
     });
@@ -78,8 +90,12 @@ module.exports = (conn, r) => {
         const { id } = req.query;
         console.log(id);
 
+        if (!id) return res.redirect("/");
+
         await r.table("Users").get(id).update({ verified: true }).run(conn);
+
         res.redirect("/?v=success");
     });
+
     return app;
-}
+};
