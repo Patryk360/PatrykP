@@ -1,3 +1,3 @@
 module.exports = {
-    domain: "https://patrykp.pl",
+    domain: "http://localhost:8080",
 }
