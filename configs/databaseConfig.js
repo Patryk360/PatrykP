@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 module.exports = {
     database: {
         host: "130.61.95.106",
