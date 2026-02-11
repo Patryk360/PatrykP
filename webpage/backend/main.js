@@ -40,15 +40,8 @@ module.exports = (conn, r) => {
     app.get("/offers", (req, res) => {
         res.render("html/offers.html", { token: req.cookies.token });
     });
-    app.get("/mainblog", (req, res) => {
-        res.render("html/blog/mainBlog.html", { token: req.cookies.token, blogs: [] });
-    });
-    app.get("/makeblog", (req, res) => {
-        res.render("html/blog/makeBlog.html", { token: req.cookies.token });
-    });
-    app.get("/blog", (req, res) => {
-        res.render("html/blog/blog.html", { token: req.cookies.token, html: "ok" });
-    });
+
+    app.use("/", require("./blog/blog.js")());
 
     app.use("/", require("./learn/words.js")());
     app.use("/", require("./portfolio/cv.js")());
@@ -56,6 +49,7 @@ module.exports = (conn, r) => {
 
     app.use("/", require("./dashboard/auth.js")(conn, r));
     app.use("/", require("./dashboard/register.js")(conn, r));
+    app.use("/", require("./dashboard/profile.js")(conn, r));
     app.use("/", require("./dashboard/ytdownloader.js")(conn, r));
 
     app.use("/api", require("./api/stripe.js")(conn, r));

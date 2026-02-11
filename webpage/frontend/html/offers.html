@@ -1,54 +1,82 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/main.css" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="/images/logo.png">
-        <title>Oferty</title>
-    </head>
-    <body>
-        <%- include('partials/navbar.html', { token }); %>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-        <div class="container text-center">
-            <div class="row align-items-start">
-                <div class="col-xxl-3 col-sm-6 p-3">
-                    <div class="card">
-                        <img src="" class="card-img-top img-fluid rounded-circle" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">...</h5>
-                            <p class="card-text">...</p>
-                            <a href="" class="btn btn-primary">...</a>
-                        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <title>Oferty</title>
+</head>
+<body>
+    <%- include('partials/navbar.html', { token }); %>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#212529" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
+    <div class="container text-center my-5">
+        <h2 class="mb-5 fw-bold text-uppercase">Moje Usługi</h2>
+        <div class="row justify-content-center">
+            
+            <div class="col-lg-3 col-md-6 p-3">
+                <div class="card shadow-lg h-100">
+                    <div class="card-img-top text-center">
+                        <div class="offer-icon">🖨️</div>
                     </div>
-                </div>
-                <div class="col-xxl-3 col-sm-6 p-3">
-                    <div class="card">
-                        <img src="" class="card-img-top img-fluid rounded-circle" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">...</h5>
-                            <p class="card-text">...</p>
-                            <a href="" class="btn btn-primary">...</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-sm-6 p-3">
-                    <div class="card">
-                        <img src="" class="card-img-top img-fluid rounded-circle" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">...</h5>
-                            <p class="card-text">...</p>
-                            <a href="" class="btn btn-primary">...</a>
-                        </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Druk 3D</h5>
+                        <p class="card-text text-muted small">Realizacja modeli z Twoich projektów lub gotowych plików. Różne materiały (PLA, PETG, ABS).</p>
+                        <a href="/contact?service=druk3d" class="btn btn-dark mt-auto">Zamów wydruk</a>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-6 p-3">
+                <div class="card shadow-lg h-100">
+                    <div class="card-img-top text-center">
+                        <div class="offer-icon">💻</div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Programowanie</h5>
+                        <p class="card-text text-muted small">Tworzenie aplikacji webowych, skryptów automatyzujących oraz rozwiązań backendowych w Node.js.</p>
+                        <a href="/contact?service=dev" class="btn btn-dark mt-auto">Zapytaj o projekt</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 p-3">
+                <div class="card shadow-lg h-100">
+                    <div class="card-img-top text-center">
+                        <div class="offer-icon">🔌</div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Systemy Embedded</h5>
+                        <p class="card-text text-muted small">Projektowanie i programowanie układów opartych na ESP32, STM32 oraz Arduino. IoT i sterowanie.</p>
+                        <a href="/contact?service=embedded" class="btn btn-dark mt-auto">Zleć projekt</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 p-3">
+                <div class="card shadow-lg h-100">
+                    <div class="card-img-top text-center">
+                        <div class="offer-icon">🚁</div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Nagrywanie dronem</h5>
+                        <p class="card-text text-muted small">Profesjonalne ujęcia z powietrza w wysokiej rozdzielczości. Inspekcje, wydarzenia i filmy promocyjne.</p>
+                        <a href="/contact?service=drone" class="btn btn-dark mt-auto">Zamów ujęcia</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-        <%- include('partials/footer.html', { }); %>
-        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/jquery/jquery-3.6.0.min.js"></script>
-        <script src="/js/main.js"></script>
-    </body>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" style="margin-bottom: -1px;"><path fill="#212529" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    <%- include('partials/footer.html', { }); %>
+
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/jquery/jquery-3.6.0.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
 </html>

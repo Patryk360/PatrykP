@@ -1,30 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    <title>Snake</title>
+    <title>Snake - Gra Retro</title>
     <link rel="stylesheet" href="/css/fun/snake.css">
 </head>
 <body>
-    <div class="centerDiv">
-        <h3 id="point">0</h3>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card leaderboard-card shadow">
+                    <div class="card-header bg-dark border-bottom border-secondary">
+                        <h4 class="mb-0 text-center text-primary pacifico">Top Players</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-dark table-hover table-sm mb-4">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Gracz</th>
+                                    <th class="text-end">Wynik</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard">
+                                </tbody>
+                        </table>
+
+                        <div class="input-group mb-3">
+                            <input type="text" id="name" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Twój Nick">
+                            <button class="btn btn-outline-primary btn-sm" onclick="changeName()">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 text-center">
+                <div class="mb-3">
+                    <h1 class="display-4 pacifico text-success">Snake</h1>
+                    <div class="badge bg-success fs-4 px-4 py-2 shadow-sm">
+                        Punkty: <span id="point">0</span>
+                    </div>
+                </div>
+
+                <canvas id="snake" width="806" height="806" class="rounded bg-black"></canvas>
+
+                <div class="mt-4 d-flex justify-content-center gap-3">
+                    <button class="btn btn-lg btn-success px-5 shadow" onclick="start()">START</button>
+                    <button class="btn btn-lg btn-danger px-5 shadow" onclick="stopAndSave()">STOP</button>
+                </div>
+            </div>
+
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="alert alert-secondary bg-dark text-white border-secondary small">
+                    <h6 class="fw-bold">Instrukcja:</h6>
+                    <ul class="mb-0 ps-3">
+                        <li>Używaj WSAD do sterowania.</li>
+                        <li>Zbieraj jedzenie, aby rosnąć.</li>
+                        <li>Nie uderzaj we własny ogon!</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="topDiv">
-        <table id="leaderboard"></table>
-        <form id="form">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" value=""><br>
-        </form>
-        <button onclick="changeName()">OK</button>
-    </div>
-    <canvas id="snake" class="center" width="806" height="806"></canvas>
+
     <script src="/js/fun/snake.js"></script>
-    <button class="center" onclick="start()">Start</button>
-    <button class="center" onclick="stop()">Stop</button>
 </body>
 </html>

@@ -1,20 +1,30 @@
 "use strict";
-require("dotenv").config();
+require("dotenv").config({ quiet: true });
 const { domain } = require("../../../configs/dashboardConfig.js");
 const bcrypt = require("bcrypt");
-const Mailjet = require("node-mailjet");
+const nodemailer = require("nodemailer");
 const { Router } = require("express");
+
 const app = Router();
 
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
+    }
+});
+
 module.exports = (conn, r) => {
+
     app.get("/register", async (req, res) => {
-        res.render("html/dashboard/register.html", { token: req.cookies.token });
+        res.render("html/dashboard/register.html", {
+            token: req.cookies.token
+        });
     });
 
     app.post("/register/submit", async (req, res) => {
         const { username, email, password, confirmPassword } = req.body;
-
-        console.log(req.body);
 
         if (password !== confirmPassword || password.length < 8) {
             return res.redirect("/register?r=error");
@@ -22,10 +32,13 @@ module.exports = (conn, r) => {
 
         const id = await r.uuid().run(conn);
         const hash = await bcrypt.hash(password, 10);
+
         const user = {
             id,
             username,
             email,
+            accountCreate: Date.now(),
+            avatar: false,
             token: false,
             tokenExpired: false,
             password: hash,
@@ -36,36 +49,24 @@ module.exports = (conn, r) => {
 
         if (userExists.length > 0) return res.redirect("/register?r=userExists");
 
-        console.log(user);
-
         await r.table("Users").insert(user).run(conn);
 
-        const mailjet = Mailjet.apiConnect(
-            process.env.MJ_APIKEY_PUBLIC,
-            process.env.MJ_APIKEY_PRIVATE
-        );
-
         try {
-            await mailjet.post("send", { version: "v3.1" }).request({
-                    Messages: [
-                        {
-                            From: {
-                                Email: "noreply@patrykp.pl",
-                                Name: "PatrykP"
-                            },
-                            To: [
-                                {
-                                    Email: email,
-                                    Name: username
-                                }
-                            ],
-                            Subject: "Zweryfikuj email",
-                            TextPart: `Kliknij link aby zweryfikować email:\n${domain}/verify?id=${id}`
-                        }
-                    ]
-                });
+            await transporter.sendMail({
+                from: `"PatrykP" <${process.env.MAIL_USER}>`,
+                to: email,
+                subject: "Zweryfikuj email",
+                text: `Kliknij link aby zweryfikować email:\n${domain}/verify?id=${id}`,
+                html: `
+                    <h2>Weryfikacja email</h2>
+                    <p>Kliknij link poniżej aby zweryfikować konto:</p>
+                    <a href="${domain}/verify?id=${id}">
+                        ${domain}/verify?id=${id}
+                    </a>
+                `
+            });
 
-            console.log("Mail wysłany przez Mailjet!");
+            console.log("Mail wysłany przez Gmail SMTP");
         } catch (error) {
             console.error("Błąd wysyłki maila:", error);
         }
@@ -74,12 +75,20 @@ module.exports = (conn, r) => {
     });
 
     app.get("/unregister", async (req, res) => {
-        if (!req.cookies.token) return res.redirect("/login");
-        res.render("html/dashboard/unregister.html", { token: req.cookies.token });
+        if (!req.cookies.token) {
+            return res.redirect("/login");
+        }
+
+        res.render("html/dashboard/unregister.html", {
+            token: req.cookies.token
+        });
     });
 
     app.post("/unregister/submit", async (req, res) => {
-        if (!req.cookies.token) return res.redirect("/login");
+        if (!req.cookies.token) {
+            return res.redirect("/login");
+        }
+
         await r.table("Users").getAll(req.cookies.token, { index: "token" }).delete().run(conn);
 
         res.clearCookie("token");
@@ -88,7 +97,6 @@ module.exports = (conn, r) => {
 
     app.get("/verify", async (req, res) => {
         const { id } = req.query;
-        console.log(id);
 
         if (!id) return res.redirect("/");
 
