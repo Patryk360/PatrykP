@@ -8,7 +8,9 @@ module.exports.setup = async (conn, r) => {
             { name: "token", multi: false },
         ]
     },
-        { name: "Data", primaryKey: "id", index: false }
+        { name: "Data", primaryKey: "id", index: [
+            { name: "blogId", multi: false }
+        ] }
     ];
     if (tableList.length < tableArray.length) console.log("Creating a table in the database...");
     for (const table of tableArray) {
