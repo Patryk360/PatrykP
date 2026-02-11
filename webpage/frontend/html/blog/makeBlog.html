@@ -12,11 +12,22 @@
     <body>
         <%- include('../partials/navbar.html', { token }); %>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+        
         <div class="container my-5">
             <div class="card shadow border-0">
                 <div class="card-body p-4">
                     <h3 class="pacifico mb-4">Stwórz nowy wpis</h3>
                     
+                    <div class="mb-4">
+                        <label for="blogThumbnail" class="form-label fw-bold">Miniatura posta (zdjęcie główne):</label>
+                        <div class="input-group mb-2">
+                            <input type="file" class="form-control" id="blogThumbnail" accept="image/*" onchange="previewThumbnail(event)">
+                        </div>
+                        <div id="thumbnailContainer" class="mt-2 text-center" style="display: none;">
+                            <p class="small text-muted">Podgląd miniatury:</p>
+                            <img id="thumbnailPreview" src="#" alt="Podgląd" class="img-thumbnail shadow-sm" style="max-height: 200px; border-radius: 10px;">
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="blogTitle" class="form-label fw-bold">Tytuł posta:</label>
                         <input type="text" id="blogTitle" class="form-control form-control-lg" placeholder="Wpisz tytuł...">
@@ -29,7 +40,8 @@
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">Treść:</label>
-                        <textarea name="editor" id="editor"></textarea>
+                        <div id="editor-container"> <textarea name="editor" id="editor"></textarea>
+                        </div>
                     </div>
 
                     <button class="btn btn-success btn-lg w-100 shadow-sm mt-3" onclick="saveBlog()">
@@ -38,10 +50,13 @@
                 </div>
             </div>
         </div>
+
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,138.7C384,139,480,85,576,80C672,75,768,117,864,112C960,107,1056,53,1152,53.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
         <%- include('../partials/footer.html', { }); %>
+        
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/jquery/jquery-3.6.0.min.js"></script>
+
         <script src="/js/main.js"></script>
         <script src="/js/makeblog.js"></script>
     </body>

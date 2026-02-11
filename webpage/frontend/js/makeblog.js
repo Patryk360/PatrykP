@@ -1,3 +1,4 @@
+const BlogId = 'blog-' + Date.now();
 let blogEditor;
 
 function UploadAdapterPlugin(editor) {
@@ -9,7 +10,7 @@ function UploadAdapterPlugin(editor) {
                     const data = new FormData();
                     data.append('upload', file);
 
-                    const response = await fetch('/makeblog/upload', {
+                    const response = await fetch(`/makeblog/upload/${BlogId}`, {
                         method: 'POST',
                         body: data
                     });
@@ -48,31 +49,47 @@ async function saveBlog() {
     const title = document.getElementById('blogTitle').value;
     const description = document.getElementById('blogDescription').value;
     const content = blogEditor.getData();
+    const fileInput = document.getElementById('blogThumbnail');
 
     if (!title || !content) {
         alert("Wypełnij tytuł i treść!");
         return;
     }
 
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('content', content);
+    formData.append('blogId', BlogId);
+    if (fileInput.files.length > 0) {
+        formData.append('thumbnail', fileInput.files[0]);
+    }
+
     try {
         const response = await fetch('/blog/save', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: title,
-                description: description,
-                content: content
-            })
+            body: formData
         });
 
         if (response.ok) {
-            alert("Dane wysłane pomyślnie!");
+            const result = await response.json();
+            alert("Blog zapisany pomyślnie!");
+            window.location.href = "/blogs";
         } else {
-            alert("Błąd serwera.");
+            const errData = await response.json();
+            alert("Błąd: " + (errData.error || "Błąd serwera"));
         }
     } catch (err) {
         console.error("Błąd wysyłki:", err);
     }
+}
+
+function previewThumbnail(event) {
+    const reader = new FileReader();
+        reader.onload = function() {
+            const output = document.getElementById('thumbnailPreview');
+            output.src = reader.result;
+            document.getElementById('thumbnailContainer').style.display = 'block';
+    };
+    reader.readAsDataURL(event.target.files[0]);
 }

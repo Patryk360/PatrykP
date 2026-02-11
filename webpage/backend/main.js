@@ -41,7 +41,7 @@ module.exports = (conn, r) => {
         res.render("html/offers.html", { token: req.cookies.token });
     });
 
-    app.use("/", require("./blog/blog.js")());
+    app.use("/", require("./blog/blog.js")(conn, r));
 
     app.use("/", require("./learn/words.js")());
     app.use("/", require("./portfolio/cv.js")());
