@@ -46,6 +46,7 @@ module.exports = (conn, r) => {
     app.use("/", require("./learn/words.js")());
     app.use("/", require("./portfolio/cv.js")());
     app.use("/", require("./fun/snake.js")());
+    app.use("/", require("./fun/kaligula.js")());
 
     app.use("/", require("./dashboard/auth.js")(conn, r));
     app.use("/", require("./dashboard/register.js")(conn, r));
@@ -55,6 +56,7 @@ module.exports = (conn, r) => {
     app.use("/api", require("./api/stripe.js")(conn, r));
     app.use("/api", require("./api/ytdownloader.js")(conn, r));
     app.use("/map", express.static(path.join(__dirname, "../../resources/sitemap")));
+    app.use("/kaligula", express.static(path.join(__dirname, "../../resources/kaligula")));
     app.use("/wordsjson", express.static(path.join(__dirname, "../../resources/words")));
     app.use("/images", express.static(path.join(__dirname, "../../resources/images")));
     app.use("/bootstrap/css", express.static(path.join(__dirname, "../../resources/bootstrap-5.3.8-dist/css")));

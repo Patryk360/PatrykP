@@ -1,0 +1,113 @@
+.wisdom-wrapper {
+    background-color: #ef7f1a;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.wisdom-card {
+    background: #000000; 
+    border-radius: 40px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid rgba(239, 127, 26, 0.2);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.wisdom-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    border-color: rgba(239, 127, 26, 0.5);
+}
+
+.wisdom-card::before {
+    content: '“';
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    color: #ef7f1a;
+    opacity: 0.8;
+    line-height: 1;
+    transition: transform 0.4s ease;
+}
+
+.wisdom-card:hover::before {
+    transform: rotate(-15deg) scale(1.2);
+}
+
+.wisdom-label {
+    font-family: 'Poppins', sans-serif;
+    color: #ef7f1a;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.wisdom-text {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 2.8rem;
+    font-style: italic;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease-out;
+}
+
+.wisdom-author {
+    color: #888;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+.wisdom-author::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: #ef7f1a;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.wisdom-card:hover .wisdom-author::after {
+    width: 100%;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -9,53 +9,53 @@
 
 <url>
   <loc>https://patrykp.pl/</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://patrykp.pl/offers</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://patrykp.pl/blogs</loc>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://patrykp.pl/ytdownloader</loc>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://patrykp.pl/cv</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://patrykp.pl/words</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <loc>https://patrykp.pl/voyagerzero</loc>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://patrykp.pl/login</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://patrykp.pl/words/english</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://patrykp.pl/snake</loc>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://patrykp.pl/words/german</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <loc>https://patrykp.pl/blog/a8455dfd-667b-4605-8779-f876ce701351</loc>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://patrykp.pl/register</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
+  <lastmod>2026-02-11T15:34:20+00:00</lastmod>
   <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://patrykp.pl/words/english/list</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://patrykp.pl/words/german/list</loc>
-  <lastmod>2025-02-24T10:27:05+00:00</lastmod>
-  <priority>0.51</priority>
 </url>
 
 
