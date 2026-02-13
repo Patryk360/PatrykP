@@ -70,8 +70,9 @@ module.exports = (conn, r) => {
     app.use((req, res) => {
         res.status(404).render("html/httpStatus/404.html", {
             err: {
-                code: "Nie znaleziono strony '" + req.url + "' Strona nie istnieje lub tymczasowo nie działa :/"
-            }
+                code: "Nie znaleziono strony " + req.url
+            },
+            token: req.cookies.token
         });
     });
 
