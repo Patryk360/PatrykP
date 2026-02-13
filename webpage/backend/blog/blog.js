@@ -2,7 +2,9 @@
 const { Router } = require("express");
 const app = Router();
 const multer = require('multer');
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({ storage: multer.memoryStorage(),
+    limits: { fileSize: 50 * 1024 * 1024 }
+ });
 
 module.exports = (conn, r) => {
     app.get("/blogs", async (req, res) => {
